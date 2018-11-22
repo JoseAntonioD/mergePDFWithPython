@@ -204,7 +204,7 @@ def main():
     frame.config(bg="lightblue")
     frame.config(bd=25)
     frame.config(relief="sunken")
-    
+    frame.config()
     window.config(cursor="arrow")
 #    window.config(bg="blue")
 #    window.config(bd=15)
@@ -214,6 +214,7 @@ def main():
     window.title('Welcome to the Jungle')
      
     window.geometry('800x450+600+420')
+   
     
     btnMasterFile = Button(window, text="SELECCIONE EL ARCHIVO MAESTRO", fg="black", bg="#FAAC58", height = 2, width = 85)
     btnMasterFile.pack()
