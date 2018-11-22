@@ -1,10 +1,10 @@
 				
-<<<<<<< HEAD
+
 						MERGEPDF
-=======
+
 						
 					
->>>>>>> eb691763471f324d4282f562dbab34ceb2d6d9aa
+
 
 Este script permite unir varios documentos pdf en uno. Está basado en Python 3.6. 
 
