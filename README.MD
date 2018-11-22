@@ -1,5 +1,3 @@
-﻿
-
 				MERGE PDF:
 
 Este script permite unir varios documentos pdf en uno. Está basado en Python 3.6. 
@@ -16,7 +14,3 @@ La aplicación consta de una interfaz gráfica con cuatro botones. Se explica br
 Requerimientos:
 
 	sudo pip install pyPdf2
-
-
-
-
