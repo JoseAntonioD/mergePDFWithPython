@@ -108,7 +108,7 @@ class AddToPdf:
             #Copiamos o archivo que contén todo o contido.
             shutil.copy(os.path.join(directory,filename), os.path.join(directory,nombre_archivo_salida))
             shutil.copy(os.path.join(directory,filename), os.path.join(directory,'backup_'+nombre_archivo_salida))
-            shutil.copy(os.path.join(directory,filename), os.path.join(directory,'copyfile.pdf'))
+            shutil.copy(os.path.join(directory,filename), os.path.join(directory,'00_copyfile.pdf'))
             deleteFile = [directory, filename]
             deleteFile = ''.join(deleteFile) 
             #print('Borrado:' , deleteFile)
@@ -124,7 +124,8 @@ class AddToPdf:
                if directory != (os.path.split(pdf)[0]+'/'):
                    shutil.copy(os.path.join(directoryMerge,pdf), os.path.join(directory,newPdfFile))
                
-            pdfsMergeCopy.append(directory+'copyfile.pdf')
+            pdfsMergeCopy.append(directory+'00_copyfile.pdf')
+            pdfsMergeCopy.sort(key=os.path.basename)
             #print('pdfsMergeCopy ---->>> ',pdfsMergeCopy)
             AddToPdf.operationsFiles(directory, filename, nombre_archivo_salida)
                     
@@ -190,6 +191,7 @@ class AddToPdf:
      #Renomear arquivo orixinal.       
     def renameFile( nombre_archivo_salida, filename, directory):
         os.rename(os.path.join(directory,nombre_archivo_salida), os.path.join(directory,filename))
+        os.rename(os.path.join(directory,'backup_'+nombre_archivo_salida), os.path.join(directory,nombre_archivo_salida))
         
     def callback(self, event):
         self.findFiles( self.pdfsMerge)
