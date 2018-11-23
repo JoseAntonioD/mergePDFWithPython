@@ -129,14 +129,16 @@ class AddToPdf:
             AddToPdf.operationsFiles(directory, filename, nombre_archivo_salida)
                     
             #Eliminar elementos de la lista.
-            for i in range(len(pdfsMergeII)):            
-                pdfsMergeII.pop(i)
+            del pdfsMergeII[:]
+            #print(pdfsMergeII)
+    
     
         except:
                     
             #print('Non existe o arquivo!!!.')
+            del pdfsMergeII[:]
             messagebox.showinfo("Información","Se ha producido un error en la operación.")
-                       
+                           
                     
      
     def openFiles():
