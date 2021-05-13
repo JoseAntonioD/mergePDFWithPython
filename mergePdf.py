@@ -19,7 +19,6 @@ class AddToPdf:
 
     
     
-    #Variabeis globais.
     #Variables globales.
     pdfsMerge=[]
     directory = ''
@@ -79,7 +78,7 @@ class AddToPdf:
         directory = os.path.split(filename)[0]
         filename = os.path.split(filename)[1]
         
-         #Concateno a / para a función shutil.copy
+         #Concateno a / para la función shutil.copy
         directory = directory + '/'
 
         
@@ -105,18 +104,14 @@ class AddToPdf:
              
             pdfsMerge.sort(key=os.path.basename)                   
                    
-            #Fago unha copia do archivo maestro. Despois uso este arquivo para almacenar toda a información. Cando 
-            #remata o proceso coa funcion "rename" renomeámolo ao nome orixinal.
             #Hago una copia del archivo maestro. Despues uso ese archivo para almacenar toda la información. Cuando
             #termina el proceso con la función "rename" lo renombro con el nombre original.
             shutil.copy(os.path.join(directory,filename), os.path.join(directory,nombre_archivo_salida))
-            #Fago unha segunda copia do arquivo orixinal para ter de backup.
-            #Hago una tercera copia del archivo original para dejar como backup.
+            #Hago una segunda copia del archivo original para dejar como backup.
             shutil.copy(os.path.join(directory,filename), os.path.join(directory,'backup_'+nombre_archivo_salida))
-            #Fago unha terceira copia para usar este arquivo como o primeiro que se vai engadir.
             #Hago una tercera copia para usar este archivo como el primero en ser añadido.
             shutil.copy(os.path.join(directory,filename), os.path.join(directory,'00_copyfile.pdf'))
-            #Unha vez feitas as copias, borro o arquivo orixinal.
+            #Una vez hechas las copias, borro el archivo original.
             deleteFile = [directory, filename]
             deleteFile = ''.join(deleteFile) 
             
@@ -124,7 +119,6 @@ class AddToPdf:
             
             
             for pdf in pdfsMergeII:
-               #Copiamos os archivos dun directorio a outro(só no caso de que a orixe e o destino sexan diferentes).
                #Copiamos los archivos de un directorio a otro(solo en el caso de que el origen y el destino sean diferentes).
                newPdfFile = os.path.split(pdf)[1]
                newPdfOrigin = ''.join(newPdfFile)
@@ -133,14 +127,12 @@ class AddToPdf:
                if directory != (os.path.split(pdf)[0]+'/'):
                    shutil.copy(os.path.join(directoryMerge,pdf), os.path.join(directory,newPdfFile))
             
-            #Engado o arquivo que ten unha copia do orixinal para ser o primeiro en ser engadido.
             #Añado el archivo que tiene la copia del original para ser el primero en ser añadido.
             pdfsMergeCopy.append(directory+'00_copyfile.pdf')
             pdfsMergeCopy.sort(key=os.path.basename)
             
             AddToPdf.operationsFiles(directory, filename, nombre_archivo_salida)
                     
-            #Elimino os elementos da lista.
             #Elimino los elementos de la lista.
             del pdfsMergeII[:]
             
@@ -170,7 +162,6 @@ class AddToPdf:
         
         messagebox.showinfo("Información","Proceso terminado correctamente.")    
       
-     #Unir/fusionar arquivos.
      #Unir/fusionar los archivos.
     def fusionarFiles( directory, filename,  ficheros, nombre_archivo_salida):
         global fusionador
@@ -188,7 +179,6 @@ class AddToPdf:
         [fp.close() for fp in ficheros]
 
         
-     #Borrar arquivos xa engadidos.
      #Borrar los archivos una vez añadidos.
     def removeFiles( directory, nombre_archivo_salida, ficheros):   
         
@@ -198,9 +188,7 @@ class AddToPdf:
                 deleteFile = ''.join(deleteFile) 
                 os.remove(deleteFile)
                  
-            
-     #Renomear arquivo orixinal.    
-     #Renombrar el archivo original.
+    #Renombrar el archivo original.
     def renameFile( nombre_archivo_salida, filename, directory):
         os.rename(os.path.join(directory,nombre_archivo_salida), os.path.join(directory,filename))
         os.rename(os.path.join(directory,'backup_'+nombre_archivo_salida), os.path.join(directory,nombre_archivo_salida))
